@@ -45,7 +45,6 @@ export class AppComponent implements OnInit {
       reader.readAsDataURL(event.target.files[0]);
       reader.onload = (e: any) => {
         this.url = e.target.result;
-        console.log(this.url);
       };
     }
   }
