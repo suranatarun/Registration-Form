@@ -2,90 +2,86 @@
   <!-- Here Put Registration Form -->
   <h1>{{title}}</h1>
 
-  <div [formGroup]="registrationform">
-
-    <div class="row">
-      <div class="col-md-6">
-        <mat-label>Enter First Name</mat-label>
-        <input class="form-control" matInput type="text" placeholder="Enter First Name" [(ngModel)]="FirstName"  formControlName="FirstName" required>
+  <div class="formGroup">
+      <div class="row">
+        <div class="col-md-6">
+          <mat-label>Enter First Name</mat-label>
+          <input class="form-control" matInput type="text" placeholder="Enter First Name" [(ngModel)]="FirstName" required>
+        </div>
+        <div class="col-md-6">
+          <mat-label>Enter Last Name</mat-label>
+          <input class="form-control" matInput type="text" placeholder="Enter Last Name" [(ngModel)]="LastName" required>
+        </div>
       </div>
-      <div class="col-md-6">
-        <mat-label>Enter Last Name</mat-label>
-        <input class="form-control" matInput type="text" placeholder="Enter Last Name" [(ngModel)]="LastName" formControlName="LastName" required>
+
+      <div class="row">
+        <div class="col-md-12">
+          <mat-label>Enter Gender</mat-label>
+            <mat-select class="form-control" placeholder="Enter Gender">
+              <mat-option *ngFor="let gender of Genders" [value]="gender.value">
+                {{gender.viewValue}}
+              </mat-option>
+            </mat-select>
+        </div>
       </div>
-    </div>
-
-
-    <div class="row">
-      <div class="col-md-12">
-        <mat-label>Enter Gender</mat-label>
-          <mat-select class="form-control" placeholder="Enter Gender">
-            <mat-option *ngFor="let gender of Genders" [value]="gender.value">
-              {{gender.viewValue}}
-            </mat-option>
-          </mat-select>
+  
+      
+      <div class="row">
+        <div class="col-md-6">
+          <mat-label>Enter DOB</mat-label>
+          <input class="form-control" matInput type="date" placeholder="Enter DOB" [(ngModel)]="DOB" required>
+        </div>
+        <div class="col-md-6">
+          <mat-label>Enter Age</mat-label>
+          <input class="form-control" matInput type="text" placeholder="Enter Age" [(ngModel)]="Age" required readonly>
+          <button class="btn btn-warning" (click)="CalculateAge()">Cal Age</button>
+        </div>
       </div>
-    </div>
+  
+      <div class="row">
+        <div class="col-md-6">
+          <mat-label>Enter Address Line 1</mat-label>
+          <input class="form-control" matInput type="text" placeholder="Enter Address Line 1" [(ngModel)]="Address1" required>
+        </div>
+        <div class="col-md-6">
+          <mat-label>Enter Address Line 2</mat-label>
+          <input class="form-control" matInput type="text" placeholder="Enter Address Line 2" [(ngModel)]="Address2" required>
+        </div>
+      </div>
 
+      <div class="row">
+        <div class="col-md-6">
+          <mat-label>Enter Number</mat-label>
+          <input class="form-control" matInput type="text" placeholder="Enter Mobile Number" [(ngModel)]="MobileNumber" required>
+        </div>
+        <div class="col-md-6">
+          <mat-label>Enter PinCode</mat-label>
+          <input class="form-control" matInput type="text" placeholder="Enter PinCode" [(ngModel)]="PinCode" required>
+          <button class="btn btn-warning" (click)="FetchPinCodeData()">City</button>
+        </div>
+      </div>
     
-    <div class="row">
-      <div class="col-md-6">
-        <mat-label>Enter DOB</mat-label>
-        <input class="form-control" matInput type="date" placeholder="Enter DOB" [(ngModel)]="DOB" formControlName="DOB" required>
+      <div class="row">
+        <div class="col-md-6">
+          <mat-label>Enter State</mat-label>
+          <input class="form-control" matInput type="text" placeholder="Enter State" [(ngModel)]="State"  required readonly>
+        </div>
+        <div class="col-md-6">
+          <mat-label>Enter District</mat-label>
+          <input class="form-control" matInput type="text" placeholder="Enter District" [(ngModel)]="District" required readonly>
+        </div>
       </div>
-      <div class="col-md-6">
-        <mat-label>Enter Age</mat-label>
-        <input class="form-control" matInput type="text" placeholder="Enter Age" [(ngModel)]="Age" formControlName="Age" required readonly>
+        
+      <div class="row">
+        <div class="col-md-6">
+          <mat-label>Upload Only Image</mat-label><br>
+          <input type="file" matInput required>
+        </div>
       </div>
-    </div>
-
-    <div class="row">
-      <div class="col-md-6">
-        <mat-label>Enter Address Line 1</mat-label>
-        <input class="form-control" matInput type="text" placeholder="Enter Address Line 1" [(ngModel)]="Address" formControlName="Address" required>
-      </div>
-      <div class="col-md-6">
-        <mat-label>Enter Address Line 2</mat-label>
-        <input class="form-control" matInput type="text" placeholder="Enter Address Line 2" [(ngModel)]="Address" formControlName="Address" required>
-      </div>
-    </div>
-
-
-    <div class="row">
-      <div class="col-md-6">
-        <mat-label>Enter Number</mat-label>
-        <input class="form-control" matInput type="text" placeholder="Enter Mobile Number" [(ngModel)]="MobileNumber" formControlName="MobileNumber" required>
-      </div>
-      <div class="col-md-6">
-        <mat-label>Enter PinCode</mat-label>
-        <input class="form-control" matInput type="text" placeholder="Enter PinCode" [(ngModel)]="PinCode" formControlName="PinCode" required>
+      
+      <div class="row">
+        <div class="col-md-12">
+          <button class="btn btn-warning" style="width: 100%;" (click)="SubmitForm()">Save Form Data</button>
+        </div>
       </div>
     </div>
-
-    <div class="row">
-      <div class="col-md-6">
-        <mat-label>Enter State</mat-label>
-        <input class="form-control" matInput type="text" placeholder="Enter State" [(ngModel)]="State" formControlName="State" required readonly>
-      </div>
-      <div class="col-md-6">
-        <mat-label>Enter District</mat-label>
-        <input class="form-control" matInput type="text" placeholder="Enter District" [(ngModel)]="District" formControlName="District" required readonly>
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="col-md-6">
-        <mat-label>Upload Only Image</mat-label><br>
-        <input type="file" matInput [(ngModel)]="image" formControlName="image" required>
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="col-md-12">
-        <button class="btn btn-warning" style="width: 100%;">Save Form Data</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-
