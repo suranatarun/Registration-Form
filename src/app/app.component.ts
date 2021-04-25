@@ -1,5 +1,6 @@
-import { Component, ElementRef, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { DataService } from './data.service';
+import { ToastrService } from 'ngx-toastr';
 
 interface Gender {
   value: string;
@@ -13,7 +14,7 @@ interface Gender {
 })
 export class AppComponent implements OnInit {
 
-  constructor(private data: DataService) { }
+  constructor(private data: DataService, private toastr: ToastrService) { }
 
   title = 'Registration Form';
 
@@ -72,6 +73,43 @@ export class AppComponent implements OnInit {
   }
 
   public SubmitForm(): any {
+
+    if (!this.FirstName) {
+      this.toastr.warning('Enter first name');
+    }
+    else if (!this.LastName) {
+      this.toastr.warning('Enter last name');
+    }
+    else if (!this.Genders) {
+      this.toastr.warning('Enter gender');
+    }
+    else if (!this.DOB) {
+      this.toastr.warning('Enter Date of Birth');
+    }
+    else if (!this.Age) {
+      this.toastr.warning('Enter Age');
+    }
+    else if (!this.Address1) {
+      this.toastr.warning('Enter Address Line 1');
+    }
+    else if (!this.Address2) {
+      this.toastr.warning('Enter Address Line 2');
+    }
+    else if (!this.MobileNumber) {
+      this.toastr.warning('Enter Mobile Number');
+    }
+    else if (!this.PinCode) {
+      this.toastr.warning('Enter PinCode');
+    }
+    else if (!this.State) {
+      this.toastr.warning('Enter State');
+    }
+    else if (!this.District) {
+      this.toastr.warning('Enter District');
+    }
+    else {
+      this.toastr.warning('Please Upload Image File');
+    }
     const FormData = {
       FirstName: this.FirstName,
       LastName: this.LastName,
